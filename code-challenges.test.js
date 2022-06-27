@@ -152,10 +152,62 @@ describe('divByThree', () => {
 
 // a) Create a test with an expect statement using the variables provided.
 
-const cubeAndSum1 = [2, 3, 4]
-// Expected output: 99
-const cubeAndSum2 = [0, 5, 10]
-// Expected output: 1125
+describe('cubeIt', () => {
+  it('takes in an array of numbers and returns the sum of all the numbers cubed', () => {
+    const cubeAndSum1 = [2, 3, 4]
+    const cubeAndSum2 = [0, 5, 10]
+    const expected1 = 99
+    const expected2 = 1125
+    expect(cubeIt(cubeAndSum1)).toEqual(expected1)
+    expect(cubeIt(cubeAndSum2)).toEqual(expected2)
+  });
+});
 
+/* Red Test Failed Successfully
+   FAIL  ./code-challenges.test.js
+  intros
+    ✓ takes in an array of objects and returns an array with a sentance about each person, with their name capitalized (3 ms)
+  divByThree
+    ✓ take in a mixed data array and returns an array of only the remainders of the numbers when devided by 3 (1 ms)
+  cubeIt
+    ✕ takes in an array of numbers and returns the sum of all the numbers cubed (1 ms)
+  ReferenceError: cubeIt is not defined
+*/
 
 // b) Create the function that makes the test pass.
+
+  /* Pseudocode - cubeIt
+    Function: cubeIt
+    Parameters: 1 x array of numbers (numArr)
+    Logic:
+      - create a new variable called cubedNums
+      - iterate over each number in the numsArr
+      - return the number cubed for each number back to the cubedNums array
+      - after all numbers have been cubed, iterate over the numbers
+      - add the value to the sum of the last number until all numbers have been sumed up
+      - return the sumed value of all the numbers
+  */
+
+  // const cubeIt = (numArr) => {
+  //   const cubedNums = numArr.map(num => {
+  //     return num ** 3
+  //   })
+  //   return cubedNums.reduce((num1, num2) => num1 + num2, 0)
+  // }
+
+  /* Green Test Passed Successfully
+      PASS  ./code-challenges.test.js
+    intros
+      ✓ takes in an array of objects and returns an array with a sentance about each person, with their name capitalized (3 ms)
+    divByThree
+      ✓ take in a mixed data array and returns an array of only the remainders of the numbers when devided by 3
+    cubeIt
+      ✓ takes in an array of numbers and returns the sum of all the numbers cubed (1 ms)
+    Test Suites: 1 passed, 1 total
+  */
+
+  /* Refactor */
+  const cubeIt = numArr => {
+    cubed: cubedNums = numArr.map(num => num ** 3)
+    sum: return cubedNums.reduce((num1, num2) => num1 + num2, 0)
+  }
