@@ -14,8 +14,6 @@ Run the file with the following command: $ yarn jest
 /* 1) Create a function that takes in an array of objects and returns an array with a sentence about each person with their name capitalized. */
 /* ------------------------------------------- */
 
-const { exportAllDeclaration } = require("@babel/types")
-
   // a) Create a test with an expect statement using the variable provided.
   describe("intros", () => {
     it("takes in an array of objects and returns an array with a sentance about each person, with their name capitalized", () => {
@@ -86,13 +84,67 @@ const { exportAllDeclaration } = require("@babel/types")
 
 // a) Create a test with an expect statement using the variables provided.
 
-const hodgepodge1 = [23, "Heyyyy!", 45, -10, 0, "Yo", false]
-// Expected output: [ 2, 0, -1, 0 ]
-const hodgepodge2 = [5, "Hola", 43, -34, "greetings", true]
-// Expected output: [ 2, 1, -1 ]
+describe('divByThree', () => {
+  it('take in a mixed data array and returns an array of only the remainders of the numbers when devided by 3', () => {
+    // Test Inputs
+    const hodgepodge1 = [23, "Heyyyy!", 45, -10, 0, "Yo", false]
+    const hodgepodge2 = [5, "Hola", 43, -34, "greetings", true]
+    // Expected Results
+    const expected1 = [ 2, 0, -1, 0 ]
+    const expected2 = [ 2, 1, -1 ]
+    
+    expect(divByThree(hodgepodge1)).toEqual(expected1)
+    expect(divByThree(hodgepodge2)).toEqual(expected2)
+  });
+});
 
+    /* Red Test Failed Successfully
+        FAIL  ./code-challenges.test.js
+        intros
+          ✓ takes in an array of objects and returns an array with a sentance about each person, with their name capitalized (2 ms)
+        divByThree
+          ✕ take in a mixed data array and returns an array of only the remainders of the numbers when devided by 3 (1 ms)
+          ReferenceError: divByThree is not defined
+    */
 
 // b) Create the function that makes the test pass.
+
+/* Pseudocode - divByThree
+  Function: divByThree
+  Parameters: 1 x mixed data array named mixArr
+  Logic:
+    - Create variable called nums to contain all numbers
+    - Iterate over each item, moving only the numbers to the nums array
+    - If item is a number, divide by three and return remainder to nums arr
+    - Once all items have been iterated over, return newly formed arr of remainder numbers that have been computed
+*/
+
+  // const divByThree = (mixArr) => {
+  //   const nums = mixArr.filter(item => {
+  //     return typeof item === "number"
+  //   })
+
+  //   divNums = nums.map(num => {
+  //     return num % 3
+  //   })
+  //   return divNums
+  // }
+
+  /* Green Test Passed Successfully
+    PASS  ./code-challenges.test.js
+    intros
+      ✓ takes in an array of objects and returns an array with a sentance about each person, with their name capitalized (3 ms)
+    divByThree
+      ✓ take in a mixed data array and returns an array of only the remainders of the numbers when devided by 3 (1 ms)
+  */
+
+  /* Refactor */
+  const divByThree = mixArr => {
+    filter: nums    = mixArr.filter(item => typeof item === "number")
+    map:    divNums = nums.map(num => num % 3)
+    return divNums
+  }
+
 
 /* ---------------- Question 3 --------------- */
 /* 3) Create a function that takes in an array of numbers and returns the sum of all the numbers cubed. */
